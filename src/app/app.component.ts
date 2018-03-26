@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { LOAD_USERS } from './actions/user.actions';
+import { State } from './reducers/user.reducer';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Users DB';
+  constructor(private store: Store<any>) {
+    this.store.dispatch({ type: LOAD_USERS });
+  }
 }

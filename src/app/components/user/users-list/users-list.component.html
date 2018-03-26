@@ -1,0 +1,4 @@
+<p *ngFor="let user of users$">
+  {{user.name}}
+  <a [routerLink]="['/user/', user.id]" (click)="onSelect(user)">Edit</a>
+</p>

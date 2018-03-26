@@ -1,18 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment'; // Angular CLI environemnt
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './effects/user.effects';
 
 import { AppComponent } from './app.component';
+import { UsersListComponent } from './components/user/users-list/users-list.component';
+import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 
+import { UserService } from './services/user.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
+import { routes } from './routes';
+import { userReducer } from './reducers/user.reducer';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UsersListComponent,
+    UserDetailComponent,
+    NotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({ user: userReducer }),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 // Retains last 25 states
+      //,logOnly: environment.production // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot([UserEffects])
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
