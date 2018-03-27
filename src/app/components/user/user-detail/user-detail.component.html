@@ -4,4 +4,5 @@
     <input [(ngModel)]="user$.username" name="username">
     <button type="submit">Save</button>
   </form>
+  <div *ngIf="saving">Saving</div>
 </div>

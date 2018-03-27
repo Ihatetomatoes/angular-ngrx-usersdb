@@ -5,11 +5,13 @@ import * as user from '../actions/user.actions';
 
 export interface State {
   users: User[];
+  saving: boolean;
   selectedUser: User;
 }
 
 export const initialState: State = {
   users: [],
+  saving: false,
   selectedUser: null
 };
 
@@ -21,6 +23,12 @@ export function userReducer(state = initialState, action: user.Actions): State {
     case user.SELECT_USER: {
       return { ...state, selectedUser: Object.assign({}, action.payload) };
     }
+    case user.UPDATE_USER: {
+      return {
+        ...state,
+        saving: true
+      };
+    }
     case user.UPDATE_USER_SUCCESS: {
       //const index = state.users.findIndex(user => user.id === action.payload.id);
       return {
@@ -28,6 +36,7 @@ export function userReducer(state = initialState, action: user.Actions): State {
         users: state.users.map(
           user => (user.id === action.payload.id ? action.payload : user)
         ),
+        saving: false,
         selectedUser: action.payload
       };
     }

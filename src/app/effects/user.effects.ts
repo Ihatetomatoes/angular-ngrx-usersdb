@@ -36,9 +36,7 @@ export class UserEffects {
     //.debug('action received')
     .switchMap(action => this.userService.udpateUser(action.payload))
     //.debug('data received via the HTTP request')
-    .map(user => {
-      return new UpdateUserSuccess(user);
-    });
+    .map(user => new UpdateUserSuccess(user));
 
   @Effect()
   deleteUser$: Observable<Action> = this.actions$
@@ -46,7 +44,5 @@ export class UserEffects {
     //.debug('action received')
     .switchMap(action => this.userService.deleteUser(action.payload))
     //.debug('data received via the HTTP request')
-    .map(user => {
-      return new DeleteUserSuccess(user);
-    });
+    .map(user => new DeleteUserSuccess(user));
 }

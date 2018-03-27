@@ -17,6 +17,7 @@ import { ISubscription } from 'rxjs/Subscription';
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
   user$: User;
+  saving: boolean;
   userId: string;
   subscription: ISubscription;
   constructor(private store: Store<any>, private route: ActivatedRoute) {}
@@ -31,6 +32,10 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       .subscribe(user => {
         this.user$ = user;
       });
+
+    this.store.select(state => state.user.saving).subscribe(saving => {
+      this.saving = saving;
+    });
   }
   ngOnDestroy() {
     this.store.dispatch({ type: SELECT_USER, payload: null });

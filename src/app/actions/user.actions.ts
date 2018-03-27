@@ -9,7 +9,6 @@ export const UPDATE_USER = '[User] Update';
 export const UPDATE_USER_SUCCESS = '[User] Update Success';
 export const DELETE_USER = '[User] Delete';
 export const DELETE_USER_SUCCESS = '[User] Delete Success';
-
 export const LOAD_USERS = '[Users] Load';
 export const LOAD_USERS_SUCCESS = '[Users] Load Success';
 
