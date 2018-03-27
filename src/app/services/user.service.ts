@@ -14,6 +14,12 @@ export class UserService {
     return this.http.get(`${this.API_PATH}/users`).map(res => res.json());
   }
 
+  udpateUser(user: User) {
+    return this.http
+      .put(`${this.API_PATH}/users/${user.id}`, user)
+      .map(res => res.json());
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

@@ -22,6 +22,13 @@ export function userReducer(state = initialState, action: user.Actions): State {
     case user.SELECT_USER: {
       return { ...state, selectedUser: action.payload };
     }
+    case user.UPDATE_USER:
+    case user.UPDATE_USER_SUCCESS: {
+      return {
+        ...state,
+        selectedUser: action.payload
+      };
+    }
     default: {
       return state;
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '../../../models/';
-import { SELECT_USER } from '../../../actions/user.actions';
+import { SELECT_USER, UPDATE_USER } from '../../../actions/user.actions';
 
 @Component({
   selector: 'app-user-detail',
@@ -19,5 +19,8 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.store.dispatch({ type: SELECT_USER, payload: null });
+  }
+  handleSubmit() {
+    this.store.dispatch({ type: UPDATE_USER, payload: this.user$ });
   }
 }

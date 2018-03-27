@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Actions, Effect } from '@ngrx/effects';
 import {
+  LOAD_USERS,
   LoadUsersAction,
   LoadUsersSuccess,
-  LOAD_USERS,
-  LOAD_USERS_SUCCESS
+  UPDATE_USER,
+  UpdateUserAction,
+  UpdateUserSuccess
 } from '../actions/user.actions';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
@@ -23,5 +25,15 @@ export class UserEffects {
     //.debug('data received via the HTTP request')
     .map(users => {
       return new LoadUsersSuccess(users);
+    });
+
+  @Effect()
+  updateUser$: Observable<Action> = this.actions$
+    .ofType<UpdateUserAction>(UPDATE_USER)
+    //.debug('action received')
+    .switchMap(action => this.userService.udpateUser(action.payload))
+    //.debug('data received via the HTTP request')
+    .map(user => {
+      return new UpdateUserSuccess(user);
     });
 }

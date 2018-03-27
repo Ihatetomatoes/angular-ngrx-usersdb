@@ -1,3 +1,7 @@
-<p *ngIf="user$">
-  {{user$.name}}
-</p>
+<div *ngIf="user$">
+  <form (ngSubmit)="handleSubmit()" #userForm="ngForm">
+    <input [(ngModel)]="user$.name" name="name">
+    <input [(ngModel)]="user$.username" name="username">
+    <button type="submit">Save</button>
+  </form>
+</div>
