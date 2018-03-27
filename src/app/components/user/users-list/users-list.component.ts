@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../models/';
-import { SELECT_USER } from '../../../actions/user.actions';
+import { SELECT_USER, DELETE_USER } from '../../../actions/user.actions';
 
 @Component({
   selector: 'app-users-list',
@@ -24,5 +24,10 @@ export class UsersListComponent implements OnInit {
   onSelect(user: User) {
     //console.log(user);
     this.store.dispatch({ type: SELECT_USER, payload: user });
+  }
+
+  onDelete(user: User) {
+    //console.log(user);
+    this.store.dispatch({ type: DELETE_USER, payload: user });
   }
 }

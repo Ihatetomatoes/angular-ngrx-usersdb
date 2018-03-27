@@ -10,6 +10,10 @@ export class UserService {
 
   constructor(private http: Http) {}
 
+  loadUser(id: string): Observable<User> {
+    return this.http.get(`${this.API_PATH}/users/${id}`).map(res => res.json());
+  }
+
   loadUsers(): Observable<User[]> {
     return this.http.get(`${this.API_PATH}/users`).map(res => res.json());
   }
@@ -17,6 +21,12 @@ export class UserService {
   udpateUser(user: User) {
     return this.http
       .put(`${this.API_PATH}/users/${user.id}`, user)
+      .map(res => res.json());
+  }
+
+  deleteUser(user: User) {
+    return this.http
+      .delete(`${this.API_PATH}/users/${user.id}`)
       .map(res => res.json());
   }
 

@@ -7,7 +7,10 @@ import {
   LoadUsersSuccess,
   UPDATE_USER,
   UpdateUserAction,
-  UpdateUserSuccess
+  UpdateUserSuccess,
+  DELETE_USER,
+  DeleteUserAction,
+  DeleteUserSuccess
 } from '../actions/user.actions';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
@@ -35,5 +38,15 @@ export class UserEffects {
     //.debug('data received via the HTTP request')
     .map(user => {
       return new UpdateUserSuccess(user);
+    });
+
+  @Effect()
+  deleteUser$: Observable<Action> = this.actions$
+    .ofType<DeleteUserAction>(DELETE_USER)
+    //.debug('action received')
+    .switchMap(action => this.userService.deleteUser(action.payload))
+    //.debug('data received via the HTTP request')
+    .map(user => {
+      return new DeleteUserSuccess(user);
     });
 }
