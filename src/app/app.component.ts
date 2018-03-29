@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { LOAD_USERS } from './actions/user.actions';
 import { State } from './reducers/user.reducer';
+import { DomSanitizer } from '@angular/platform-browser';
 import {
   MatSidenav,
   MatSidenavContainer,

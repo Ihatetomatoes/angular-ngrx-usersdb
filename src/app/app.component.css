@@ -3,3 +3,11 @@
   color: #fff;
   padding: 8px 16px;
 }
+.sidenav-content {
+  max-height: 75vh;
+  width: 240px;
+  padding: 25px;
+}
+.main-content {
+  padding: 25px;
+}

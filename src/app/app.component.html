@@ -1,14 +1,14 @@
 <div class="app-navbar mat-elevation-z6">
+  <button mat-button (click)="sidenav.toggle()">Menu</button>
   <a href="/" mat-button>{{title}}</a>
 </div>
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
-    Sidebar
+    <div class="sidenav-content">test</div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <p>
-      <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>
-    </p>
-    <router-outlet></router-outlet>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
