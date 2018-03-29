@@ -1,0 +1,11 @@
+/* Column Widths */
+
+.mat-column-id {
+  max-width: 64px;
+}
+.mat-column-name {
+  max-width: 200px;
+}
+.mat-column-action {
+  max-width: 200px;
+}

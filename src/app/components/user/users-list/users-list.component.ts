@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../../models/';
 import { SELECT_USER, DELETE_USER } from '../../../actions/user.actions';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-users-list',
@@ -11,6 +12,8 @@ import { SELECT_USER, DELETE_USER } from '../../../actions/user.actions';
 })
 export class UsersListComponent implements OnInit {
   users$: User[];
+  displayedColumns = ['id', 'name', 'username', 'action'];
+  dataSource = new MatTableDataSource(this.users$);
 
   constructor(private store: Store<any>) {}
 

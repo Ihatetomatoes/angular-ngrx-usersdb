@@ -1,6 +1,14 @@
-<h1>{{title}}</h1>
-<p>Loading data from
-  <a href="https://jsonplaceholder.typicode.com" target="_blank">jsonplaceholder</a>.
-</p>
-
-<router-outlet></router-outlet>
+<div class="app-navbar mat-elevation-z6">
+  <a href="/" mat-button>{{title}}</a>
+</div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+    Sidebar
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p>
+      <button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button>
+    </p>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -2,7 +2,8 @@
   <form (ngSubmit)="handleSubmit()" #userForm="ngForm">
     <input [(ngModel)]="user$.name" name="name">
     <input [(ngModel)]="user$.username" name="username">
-    <button type="submit">Save</button>
+    <button type="submit" mat-raised-button color="primary">Save</button>
+
   </form>
   <div *ngIf="saving">Saving</div>
 </div>

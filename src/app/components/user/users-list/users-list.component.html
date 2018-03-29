@@ -1,5 +1,47 @@
-<p *ngFor="let user of users$">
+<!-- <p *ngFor="let user of users$">
   {{user.name}}
   <a [routerLink]="['/user/', user.id]" (click)="onSelect(user)">Edit</a>
   <button (click)="onDelete(user)">Delete</button>
-</p>
+</p> -->
+
+<!-- <mat-table [dataSource]="users$">
+  <ng-container matColumnDef="userName">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+  </ng-container>
+</mat-table> -->
+
+<div class="example-container">
+
+  <mat-table #table [dataSource]="users$">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.username}} </mat-cell>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <a [routerLink]="['/user/', user.id]" (click)="onSelect(user)" mat-raised-button color="primary">Edit</a>
+        <button (click)="onDelete(user)" mat-button>Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
