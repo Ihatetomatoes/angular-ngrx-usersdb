@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { User } from '../../../models/';
-import { SELECT_USER, DELETE_USER } from '../../../store/actions/user.actions';
+import { User } from '../../models/';
+import { SELECT_USER, DELETE_USER } from '../../store/actions/user.actions';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({

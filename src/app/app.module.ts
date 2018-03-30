@@ -1,3 +1,4 @@
+import './core/rxjs-extensions';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -12,11 +13,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
 
 import { AppComponent } from './app.component';
-import { UsersListComponent } from './components/user/users-list/users-list.component';
-import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
+import { UsersListComponent } from './user/users-list/users-list.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
-import { UserService } from './services/user.service';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UserService } from './user/user.service';
+import { NotFoundComponent } from './core/not-found/not-found.component';
 
 import { routes } from './routes';
 import { userReducer } from './store/reducers/user.reducer';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../user/user.service';
 import { Actions, Effect } from '@ngrx/effects';
 import {
   LOAD_USERS,
@@ -14,7 +14,6 @@ import {
 } from '../actions/user.actions';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
-import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class UserEffects {

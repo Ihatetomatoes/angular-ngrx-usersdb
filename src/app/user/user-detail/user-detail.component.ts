@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { User } from '../../../models/';
+import { User } from '../../models/';
 import {
   SELECT_USER,
   UPDATE_USER,
   SELECT_USER_BY_ID,
   SelectUserAction
-} from '../../../store/actions/user.actions';
+} from '../../store/actions/user.actions';
 import { ISubscription } from 'rxjs/Subscription';
 import { MatInput, MatFormField, MatSnackBar } from '@angular/material';
 
