@@ -22,36 +22,35 @@ import { routes } from './routes';
 import { userReducer } from './reducers/user.reducer';
 
 import {
-  MatButtonModule,
-  MatTableModule,
-  MatSidenavModule
+	MatButtonModule,
+	MatTableModule,
+	MatSidenavModule,
+	MatInputModule,
+	MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UsersListComponent,
-    UserDetailComponent,
-    NotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatTableModule,
-    MatSidenavModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(routes),
-    StoreModule.forRoot({ user: userReducer }),
-    // Instrumentation must be imported after importing StoreModule (config is optional)
-    StoreDevtoolsModule.instrument({
-      maxAge: 25 // Retains last 25 states
-      //,logOnly: environment.production // Restrict extension to log-only mode
-    }),
-    EffectsModule.forRoot([UserEffects])
-  ],
-  providers: [UserService],
-  bootstrap: [AppComponent]
+	declarations: [ AppComponent, UsersListComponent, UserDetailComponent, NotFoundComponent ],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MatButtonModule,
+		MatTableModule,
+		MatSidenavModule,
+		MatInputModule,
+		MatSnackBarModule,
+		FormsModule,
+		HttpModule,
+		RouterModule.forRoot(routes),
+		StoreModule.forRoot({ user: userReducer }),
+		// Instrumentation must be imported after importing StoreModule (config is optional)
+		StoreDevtoolsModule.instrument({
+			maxAge: 25 // Retains last 25 states
+			//,logOnly: environment.production // Restrict extension to log-only mode
+		}),
+		EffectsModule.forRoot([ UserEffects ])
+	],
+	providers: [ UserService ],
+	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

@@ -1,6 +1,6 @@
 <div class="app-navbar mat-elevation-z6">
   <button mat-button (click)="sidenav.toggle()">Menu</button>
-  <a href="/" mat-button>{{title}}</a>
+  <a [routerLink]="['/']" mat-button>{{title}}</a>
 </div>
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="over" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">

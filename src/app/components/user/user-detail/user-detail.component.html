@@ -1,9 +1,14 @@
 <div *ngIf="user$">
-  <form (ngSubmit)="handleSubmit()" #userForm="ngForm">
-    <input [(ngModel)]="user$.name" name="name">
-    <input [(ngModel)]="user$.username" name="username">
+  <form class="small-form" (ngSubmit)="handleSubmit()" #userForm="ngForm">
+    <mat-form-field class="input-full-width">
+      <input matInput [(ngModel)]="user$.name" name="name" value="name">
+    </mat-form-field>
+
+    <mat-form-field class="input-full-width">
+      <input matInput [(ngModel)]="user$.username" name="username" value="username">
+    </mat-form-field>
+
     <button type="submit" mat-raised-button color="primary">Save</button>
 
   </form>
-  <div *ngIf="saving">Saving</div>
 </div>
