@@ -7,7 +7,7 @@ import {
   UPDATE_USER,
   SELECT_USER_BY_ID,
   SelectUserAction
-} from '../../../actions/user.actions';
+} from '../../../store/actions/user.actions';
 import { ISubscription } from 'rxjs/Subscription';
 import { MatInput, MatFormField, MatSnackBar } from '@angular/material';
 

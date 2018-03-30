@@ -9,7 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environemnt
 import { EffectsModule } from '@ngrx/effects';
-import { UserEffects } from './effects/user.effects';
+import { UserEffects } from './store/effects/user.effects';
 
 import { AppComponent } from './app.component';
 import { UsersListComponent } from './components/user/users-list/users-list.component';
@@ -19,38 +19,43 @@ import { UserService } from './services/user.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { routes } from './routes';
-import { userReducer } from './reducers/user.reducer';
+import { userReducer } from './store/reducers/user.reducer';
 
 import {
-	MatButtonModule,
-	MatTableModule,
-	MatSidenavModule,
-	MatInputModule,
-	MatSnackBarModule
+  MatButtonModule,
+  MatTableModule,
+  MatSidenavModule,
+  MatInputModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
-	declarations: [ AppComponent, UsersListComponent, UserDetailComponent, NotFoundComponent ],
-	imports: [
-		BrowserModule,
-		BrowserAnimationsModule,
-		MatButtonModule,
-		MatTableModule,
-		MatSidenavModule,
-		MatInputModule,
-		MatSnackBarModule,
-		FormsModule,
-		HttpModule,
-		RouterModule.forRoot(routes),
-		StoreModule.forRoot({ user: userReducer }),
-		// Instrumentation must be imported after importing StoreModule (config is optional)
-		StoreDevtoolsModule.instrument({
-			maxAge: 25 // Retains last 25 states
-			//,logOnly: environment.production // Restrict extension to log-only mode
-		}),
-		EffectsModule.forRoot([ UserEffects ])
-	],
-	providers: [ UserService ],
-	bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent,
+    UsersListComponent,
+    UserDetailComponent,
+    NotFoundComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatTableModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatSnackBarModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({ user: userReducer }),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 // Retains last 25 states
+      // ,logOnly: environment.production // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot([UserEffects])
+  ],
+  providers: [UserService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
